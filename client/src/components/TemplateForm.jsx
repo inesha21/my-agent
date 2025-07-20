@@ -55,7 +55,7 @@ function TemplateForm({ onClose, onLetterGenerated, userRole }) {
   const handleSubmit = async () => {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:8000/letters/generate", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/letters/generate`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

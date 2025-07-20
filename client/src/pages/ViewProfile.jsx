@@ -29,7 +29,7 @@ export default function ViewProfile() {
       return;
     }
 
-    fetch("http://localhost:8000/profile", {
+    fetch(`${import.meta.env.VITE_API_URL}/profile`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

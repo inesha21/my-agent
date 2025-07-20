@@ -24,7 +24,7 @@ function Home() {
   const token = localStorage.getItem("access_token");
 
   const fetchAgents = () => {
-    fetch("http://localhost:8000/agents", {
+    fetch(`${import.meta.env.VITE_API_URL}/agents`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

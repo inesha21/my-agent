@@ -47,7 +47,7 @@ function EditAgentForm() {
     const fetchAgent = async () => {
       try {
         const agentRes = await fetch(
-          `http://localhost:8000/agents/${agentId}`,
+          `${import.meta.env.VITE_API_URL}/agents/${agentId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -74,7 +74,7 @@ function EditAgentForm() {
 
     const fetchTools = async () => {
       try {
-        const toolRes = await fetch("http://localhost:8000/tools", {
+        const toolRes = await fetch(`${import.meta.env.VITE_API_URL}/tools`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -92,7 +92,7 @@ function EditAgentForm() {
     };
 
     const fetchUsers = async () => {
-      const userRes = await fetch("http://localhost:8000/users", {
+      const userRes = await fetch(`${import.meta.env.VITE_API_URL}/users`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const userData = await userRes.json();
@@ -118,7 +118,7 @@ function EditAgentForm() {
     };
 
     try {
-      const res = await fetch(`http://localhost:8000/agents/${agentId}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/agents/${agentId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

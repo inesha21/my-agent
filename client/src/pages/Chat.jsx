@@ -77,7 +77,7 @@ function Chat() {
       try {
         // Fetch agent
         const agentRes = await fetch(
-          `http://localhost:8000/agents/${agentId}`,
+          `${import.meta.env.VITE_API_URL}/agents/${agentId}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -89,7 +89,7 @@ function Chat() {
         setAgentTools(agentData.tools || []);
 
         // Fetch chat history
-        const chatRes = await fetch(`http://localhost:8000/chat/${agentId}`, {
+        const chatRes = await fetch(`${import.meta.env.VITE_API_URL}/chat/${agentId}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const chatData = await chatRes.json();
@@ -114,7 +114,7 @@ function Chat() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await fetch("http://localhost:8000/profile", {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/profile`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -165,7 +165,7 @@ function Chat() {
     setLoading(true);
 
     try {
-      const res = await fetch(`http://localhost:8000/chat`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/chat`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -216,7 +216,7 @@ function Chat() {
     });
 
     try {
-      const res = await fetch(`http://localhost:8000/chat/${agentId}/upload`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/chat/${agentId}/upload`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -269,7 +269,7 @@ function Chat() {
     setIsClearing(true);
     try {
       const response = await fetch(
-        `http://localhost:8000/agents/${agentId}/clear-chat`,
+        `${import.meta.env.VITE_API_URL}/agents/${agentId}/clear-chat`,
         {
           method: "DELETE",
           headers: {

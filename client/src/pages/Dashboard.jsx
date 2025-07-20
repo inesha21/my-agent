@@ -23,7 +23,7 @@ function Dashboard() {
   const token = localStorage.getItem("access_token");
 
   const fetchAgents = () => {
-    fetch("http://localhost:8000/agents", {
+    fetch(`${import.meta.env.VITE_API_URL}/agents`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -57,7 +57,7 @@ function Dashboard() {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:8000/agents/${agentId}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/agents/${agentId}`, {
           method: "DELETE",
           headers: {
             Authorization: `Bearer ${token}`,

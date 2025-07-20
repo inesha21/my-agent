@@ -43,7 +43,7 @@ function CreateAgentForm() {
     }
 
     // Fetch available tools
-    fetch("http://localhost:8000/tools", {
+    fetch(`${import.meta.env.VITE_API_URL}/tools`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -53,7 +53,7 @@ function CreateAgentForm() {
       .catch(() => setTools([]));
 
     // Fetch users for assignment
-    fetch("http://localhost:8000/users", {
+    fetch(`${import.meta.env.VITE_API_URL}/users`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -79,7 +79,7 @@ function CreateAgentForm() {
     }
 
     try {
-      const res = await fetch("http://localhost:8000/agents", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/agents`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

@@ -26,7 +26,7 @@ export default function EditProfile() {
   useEffect(() => {
     const token = localStorage.getItem("access_token");
 
-    fetch("http://localhost:8000/profile/", {
+    fetch(`${import.meta.env.VITE_API_URL}/profile`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -67,7 +67,7 @@ export default function EditProfile() {
         body.new_password = newPassword;
       }
 
-      const res = await fetch("http://localhost:8000/profile/", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/profile`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

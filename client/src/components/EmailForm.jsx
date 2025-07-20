@@ -27,7 +27,7 @@ const EmailForm = ({ isOpen, onClose, token, setMessages }) => {
   useEffect(() => {
     const fetchEmail = async () => {
       try {
-        const res = await fetch("http://localhost:8000/profile", {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/profile`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -67,7 +67,7 @@ const EmailForm = ({ isOpen, onClose, token, setMessages }) => {
     }
 
     try {
-      const res = await fetch("http://localhost:8000/send-email", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/send-email`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

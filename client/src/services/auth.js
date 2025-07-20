@@ -22,7 +22,7 @@ export async function registerCustomer(username, password, email) {
   formData.append("email", email);
   formData.append("role", "customer");
 
-  const res = await fetch("http://localhost:8000/register", {
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/register`, {
     method: "POST",
     body: formData,
   });
@@ -39,7 +39,7 @@ export async function createUserByAdmin(username, password, role) {
   formData.append("password", password);
   formData.append("role", role);
 
-  const res = await fetch("http://localhost:8000/create-user", {
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/create-user`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${token}`,
